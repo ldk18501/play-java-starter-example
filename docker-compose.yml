@@ -1,0 +1,17 @@
+version: '2'
+
+services:
+
+  app:
+    build: .
+    image: play-starter
+    container_name: cicd-build-server
+
+  build:
+    image: opsdev1:5000/play:2.6.10
+    volumes:
+      - /home/vagrant/jenkins-agent/workspace/play-steam-starter:/root
+    working_dir: /root/play
+    network_mode: host
+    command: bash -c "sbt clean compile dist"
+    container_name: cicd-build-play
