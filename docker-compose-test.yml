@@ -13,5 +13,4 @@ services:
       - /home/vagrant/jenkins-agent/workspace/play-steam-starter:/root
     working_dir: /root/play
     network_mode: host
-    command: bash -c "sbt clean compile dist"
     container_name: cicd-build-play
